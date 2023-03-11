@@ -46,38 +46,42 @@ LinkedList.prototype.append = function(value){
 }
 
 //insert() : position 위치에 노드 추가
+
 LinkedList.prototype.insert = function(value,position = 0){
-    if(position < 0 || position > this.length){
-        return false;
-    }
-
     let node = new Node(value);
-    let current = this.head,
-    index = 0,
-    prev;
+    let current = this.head;
+    let index = 0;
+    let prev;
 
-    if(position === 0 ){
-        node.next = current;
+    if(position < 0 || position >this.length) return false;
+    
+    if(position === 0){
         this.head = node;
-    } else {
+        node.next = current;
+    }else{
         while(index++ < position){
             prev = current;
             current = current.next;
         }
-        node.next = current;
         prev.next = node;
+        node.next =current;
     }
 
     this.length++;
 
-
     return true;
-};
+
+
+}
+
 
 let ll = new LinkedList();
 
 ll.insert(1);
 ll.insert(10);
 ll.insert(100);
+
+ll.insert(2,1)
+ll.insert(3,3)
 
 ll.printNode();

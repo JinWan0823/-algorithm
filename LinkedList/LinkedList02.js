@@ -22,35 +22,36 @@ LinkedList.prototype.isEmpty = function(){
 
 //printNode() : 노드 출력
 LinkedList.prototype.printNode = function(){
-    for(let node= this.head; node !=null; node = node.next) {
-        process.stdout.write(`${node.data} ->`);
+    for(let node = this.head; node != null;node=node.next){
+        process.stdout.write(`${node.data}->`)
     }
-    console.log("null");
-};
+    console.log('null')
+}
 //append() : 연결 리스트 가장 끝에 노드 추가
 LinkedList.prototype.append = function(value){
     let node = new Node(value);
     let current = this.head;
 
-    if(this.head == null){
-        this.head = node;
-    }else{
-        while(current.next != null){
+    if(this.head == null) this.head = node;
+    else{
+        while(current.next !== null){
             current = current.next;
         }
         current.next = node;
     }
     this.length++;
+}
 
-};
 
 
 let ll = new LinkedList();
 
 ll.append(1);
 ll.append(10);
+console.log(ll)
 ll.append(100);
 ll.append(1000);
+
 
 ll.printNode();
 

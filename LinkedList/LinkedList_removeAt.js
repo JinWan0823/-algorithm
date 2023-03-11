@@ -82,6 +82,7 @@ LinkedList.prototype.remove = function(value){
     while(current.data != value && current.next != null){
         prev = current;
         current = current.next;
+
     }
 
     if(current.data != value){
@@ -100,10 +101,8 @@ LinkedList.prototype.remove = function(value){
 
 
 //removeAt() : position 위치 노드 삭제
-LinkedList.prototype.removeAt = function(position = 0){
-    if(position < 0 || position >= this.length){
-        return null;
-    }
+LinkedList.prototype.removeAt = function(position=0){
+    if(position < 0 || position > this.length) return false;
 
     let current = this.head;
     let index = 0;
@@ -112,16 +111,14 @@ LinkedList.prototype.removeAt = function(position = 0){
     if(position === 0){
         this.head = current.next;
     }else{
-        while(index++ <position){
-            prev = current;
+        while(index++ < position){
+            prev= current;
             current = current.next;
         }
 
-        prev.next =current.next
+        prev.next = current.next
     }
-
     this.length--;
-
     return current.data;
 }
 
